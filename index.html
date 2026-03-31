@@ -1,62 +1,183 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Evototakas</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial;
-      background: #F7F9FC;
-      text-align: center;
-    }
-    .container {
-      padding: 80px 20px;
-    }
-    h1 {
-      color: #2F80ED;
-      font-size: 40px;
-    }
-    p {
-      color: #555;
-      font-size: 18px;
-    }
-    .btn {
-      margin-top: 20px;
-      padding: 15px 30px;
-      background: #2F80ED;
-      color: white;
-      border-radius: 10px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    form {
-      margin-top: 40px;
-    }
-    input {
-      display: block;
-      margin: 10px auto;
-      padding: 10px;
-      width: 250px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Evototakas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:#f5f7fa;
+}
+
+.navbar {
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  background:white;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo {
+  color:#2F80ED;
+  font-weight:bold;
+  font-size:20px;
+}
+
+.hero {
+  text-align:center;
+  padding:60px 20px;
+}
+
+.hero h1 {
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.search-box {
+  background:white;
+  padding:20px;
+  margin:20px auto;
+  max-width:800px;
+  border-radius:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.05);
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.search-box select, .search-box input {
+  padding:10px;
+  flex:1;
+}
+
+.btn {
+  background:#2F80ED;
+  color:white;
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:40px;
+}
+
+.card {
+  background:white;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.card img {
+  width:100%;
+}
+
+.card-body {
+  padding:15px;
+}
+
+.price {
+  color:#2F80ED;
+  font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>Evototakas</h1>
-  <p>Satmadan değiştir. Evini, arabanı ya da arsanı kolayca takas et.</p>
-
-  <a href="#" class="btn">Takasını Başlat</a>
-
-  <form>
-    <input type="text" placeholder="Ad Soyad">
-    <input type="text" placeholder="Telefon">
-    <input type="text" placeholder="Ne takas etmek istiyorsun?">
-  </form>
+<div class="navbar">
+  <div class="logo">Evototakas</div>
+  <div>İlanlar | Giriş</div>
 </div>
+
+<div class="hero">
+  <h1>Satmadan değiştir</h1>
+  <p>Evini, arabanı veya arsını takas et</p>
+
+  <div class="search-box">
+    <select>
+      <option>Ne veriyorsun?</option>
+      <option>Ev</option>
+      <option>Araç</option>
+      <option>Arsa</option>
+    </select>
+
+    <select>
+      <option>Ne almak istiyorsun?</option>
+      <option>Ev</option>
+      <option>Araç</option>
+      <option>Arsa</option>
+    </select>
+
+    <select id="city">
+      <option>İl seç</option>
+    </select>
+
+    <select id="district">
+      <option>İlçe seç</option>
+    </select>
+
+    <button class="btn">Ara</button>
+  </div>
+</div>
+
+<div class="cards">
+
+  <div class="card">
+    <img src="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fvia.placeholder.com%2F300&data=05%7C02%7CYasin.Tunckaya%40honeywell.com%7C9707ebcc4fa2497ecf4208de8f37916e%7C96ece5269c7d48b08daf8b93c90a5d18%7C0%7C0%7C639105665998762306%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=h6Tr7xcW2u6K4biH%2FAiuLOdR%2BZGj%2FQE9rfog59hdAa0%3D&reserved=0">
+    <div class="card-body">
+      <h3>3+1 Daire - İstanbul</h3>
+      <p class="price">3.200.000 TL</p>
+      <p>+ 500.000 TL fark ile SUV aranıyor</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fvia.placeholder.com%2F300&data=05%7C02%7CYasin.Tunckaya%40honeywell.com%7C9707ebcc4fa2497ecf4208de8f37916e%7C96ece5269c7d48b08daf8b93c90a5d18%7C0%7C0%7C639105665998812761%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=JwBPMH%2B5M1hCAsKre2lbWKoJif14BQaoML%2BTwbwGmfs%3D&reserved=0">
+    <div class="card-body">
+      <h3>BMW 320i 2020</h3>
+      <p class="price">1.200.000 TL</p>
+      <p>+ Daire ile takas olur</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const data = {
+  "İstanbul": ["Kadıköy","Beşiktaş","Üsküdar"],
+  "Ankara": ["Çankaya","Keçiören","Yenimahalle"],
+  "İzmir": ["Bornova","Karşıyaka","Konak"]
+};
+
+const city = document.getElementById("city");
+const district = document.getElementById("district");
+
+for (let c in data) {
+  let option = document.createElement("option");
+  option.value = c;
+  option.text = c;
+  city.appendChild(option);
+}
+
+city.addEventListener("change", function() {
+  district.innerHTML = "<option>İlçe seç</option>";
+  data[this.value].forEach(d => {
+    let opt = document.createElement("option");
+    opt.value = d;
+    opt.text = d;
+    district.appendChild(opt);
+  });
+});
+</script>
 
 </body>
 </html>
