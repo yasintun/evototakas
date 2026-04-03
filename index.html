@@ -100,11 +100,11 @@ body {
 
 <div class="hero">
   <h1>Satmadan değiştir</h1>
-  <p>Evini, arabanı veya arsını takas et</p>
+  <p>Evini, arabanı ya da arsanı takas et</p>
 
   <div class="search-box">
     <select>
-      <option>Ne veriyorsun?</option>
+      <option>Ne takas ediyorsun?</option>
       <option>Ev</option>
       <option>Araç</option>
       <option>Arsa</option>
@@ -181,3 +181,39 @@ city.addEventListener("change", function() {
 
 </body>
 </html>
+
+<script src="https://nam12.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2F%40supabase%2Fsupabase-js%402&data=05%7C02%7CYasin.Tunckaya%40honeywell.com%7Cf7ad26e69c87477e892308de916f6279%7C96ece5269c7d48b08daf8b93c90a5d18%7C0%7C0%7C639108104778751652%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=4Fiu2RpJ73T4tZgy0O%2Br32uE2EjvZyXR8DcyqD8uPA8%3D&reserved=0"></script>
+
+<script>
+const supabaseClient = supabase.createClient(
+  "https://aevjhypfhignojspxhst.supabase.co",
+  "sb_publishable_-COgdgzYAtrVQZkc7O7NdQ_l-Y7KVCY"
+);
+
+// ilanları çek
+async function loadListings() {
+  let { data } = await supabaseClient
+    .from("listings")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  const container = document.querySelector(".cards");
+  container.innerHTML = "";
+
+  data.forEach(item => {
+    container.innerHTML += `
+      <div class="card">
+        <div class="card-body">
+          <h3>${item.give_type} - ${item.city}</h3>
+          <p class="price">${item.price} TL</p>
+          <p>${item.description || ""}</p>
+        </div>
+      </div>
+    `;
+  });
+}
+
+loadListings();
+</script>
+
+
