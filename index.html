@@ -212,8 +212,49 @@ async function loadListings() {
     `;
   });
 }
-
+  
 loadListings();
 </script>
+
+<div style="background:white; padding:20px; margin:20px auto; max-width:600px; border-radius:12px;">
+  <h3>İlan Ekle</h3>
+
+  <input id="give" placeholder="Ne veriyorsun (ev, araç...)" style="width:100%; margin:5px; padding:10px;">
+  <input id="want" placeholder="Ne istiyorsun" style="width:100%; margin:5px; padding:10px;">
+  <input id="cityInput" placeholder="Şehir" style="width:100%; margin:5px; padding:10px;">
+  <input id="price" placeholder="Fiyat" style="width:100%; margin:5px; padding:10px;">
+  <input id="desc" placeholder="Açıklama" style="width:100%; margin:5px; padding:10px;">
+
+  <button onclick="addListing()" class="btn">İlan Ekle</button>
+</div>
+
+async function addListing() {
+  const give = document.getElementById("give").value;
+  const want = document.getElementById("want").value;
+  const city = document.getElementById("cityInput").value;
+  const price = document.getElementById("price").value;
+  const desc = document.getElementById("desc").value;
+
+  const { error } = await supabaseClient
+    .from("listings")
+    .insert([
+      {
+        give_type: give,
+        want_type: want,
+        city: city,
+        price: price,
+        description: desc
+      }
+    ]);
+
+  if (!error) {
+    alert("İlan eklendi!");
+    loadListings(); // listeyi yenile
+  } else {
+    alert("Hata var!");
+    console.log(error);
+  }
+}
+
 
 
